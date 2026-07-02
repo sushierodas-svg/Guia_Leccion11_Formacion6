@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-[#f0f8ff]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lección 11: Hombres y mujeres importantes de Guatemala</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        escolaris: {
+                            orange: '#db6015',
+                            yellow: '#f7be00',
+                            darkblue: '#244b5a',
+                            red: '#993921',
+                            lightblue: '#f0f8ff',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Animate.css for subtle educational transitions -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        /* Custom scrollbars inside interactive blocks */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f0f8ff;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #244b5a;
+            border-radius: 3px;
+        }
+        /* Custom slide animations */
+        .slide-transition {
+            transition: all 0.4s ease-in-out;
+        }
+    </style>
+</head>
+<body class="h-full font-sans text-gray-800 flex flex-col justify-between overflow-hidden select-none">
+
+    <!-- Top Progress Bar & Header -->
+    <header class="bg-escolaris-darkblue text-white px-6 py-3 flex justify-between items-center shadow-md shrink-0">
+        <div class="flex items-center space-x-3">
+            <div class="bg-escolaris-orange text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider shadow">
+                Colegio Escolaris
+            </div>
+            <span class="text-xs sm:text-sm text-gray-300 font-semibold hidden md:inline">| Formación Ciudadana • 6° Primaria</span>
+        </div>
+        <div class="flex items-center space-x-2">
+            <span class="text-xs font-medium text-escolaris-yellow">Progreso de la lección</span>
+            <div class="w-24 sm:w-40 bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                <div id="progressBar" class="bg-escolaris-yellow h-2.5 slide-transition" style="width: 8.33%"></div>
+            </div>
+            <span id="progressText" class="text-xs font-bold text-white min-w-[35px] text-right">1/12</span>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content Frame (Designed perfectly for Canvas iframe sizes) -->
+    <main class="relative flex-grow flex items-center justify-center p-4 md:p-8 overflow-hidden">
+        
+        <!-- Large Left Nav Arrow -->
+        <button id="prevBtn" onclick="prevSlide()" class="absolute left-1 sm:left-4 z-10 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white hover:bg-escolaris-yellow text-escolaris-darkblue hover:text-white shadow-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 active:scale-95 border-2 border-escolaris-darkblue/10 focus:outline-none disabled:opacity-0 disabled:pointer-events-none" disabled>
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+
+        <!-- Dynamic Slides Container -->
+        <div class="w-full max-w-4xl h-full max-h-[580px] bg-white rounded-3xl shadow-2xl border border-escolaris-darkblue/10 flex flex-col overflow-hidden relative">
+            
+            <!-- Slide 1: Portada Motivadora -->
+            <div id="slide-1" class="slide-element p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div class="text-center my-auto space-y-4">
+                    <span class="bg-escolaris-orange/10 text-escolaris-orange text-xs sm:text-sm font-bold px-4 py-2 rounded-full uppercase tracking-widest">
+                        Lección 11 • Formación Ciudadana
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-escolaris-darkblue leading-tight pt-2">
+                        Hombres y mujeres importantes de Guatemala
+                    </h1>
+                    <p class="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto">
+                        ¡Hola! Hoy emprenderemos un viaje interactivo para descubrir las mentes brillantes, corazones valientes y talentos extraordinarios que han transformado nuestra querida Guatemala. ¡Tú también puedes hacer historia!
+                    </p>
+                    <div class="flex justify-center py-4">
+                        <div class="relative">
+                            <!-- Artistic SVG representation of Guatemala & multicultural community -->
+                            <svg class="w-32 h-32 text-escolaris-yellow animate-bounce" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button onclick="nextSlide()" class="bg-escolaris-orange hover:bg-escolaris-orange/90 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:-translate-y-1 transition duration-200 text-sm sm:text-base">
+                        ¡Comenzar la aventura! ➔
+                    </button>
+                </div>
+            </div>
+
+            <!-- Slide 2: Objetivos de aprendizaje -->
+            <div id="slide-2" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div class="space-y-4">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-escolaris-darkblue flex items-center gap-2">
+                        <span class="text-escolaris-yellow text-3xl">🎯</span> Nuestros Objetivos de Hoy
+                    </h2>
+                    <p class="text-gray-600 text-xs sm:text-sm">Al terminar esta lección interactiva, lograrás con éxito:</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto">
+                    <div class="bg-escolaris-lightblue/60 p-5 rounded-2xl border-l-4 border-escolaris-orange flex items-start gap-3">
+                        <div class="bg-escolaris-orange text-white p-2 rounded-xl shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-escolaris-darkblue text-sm sm:text-base">Identificar Protagonistas</h4>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-1">Reconocer a los personajes más influyentes en el arte, la ciencia, la paz y la sociedad guatemalteca.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-escolaris-lightblue/60 p-5 rounded-2xl border-l-4 border-escolaris-yellow flex items-start gap-3">
+                        <div class="bg-escolaris-yellow text-escolaris-darkblue p-2 rounded-xl shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-escolaris-darkblue text-sm sm:text-base">Valorar el Legado</h4>
+                            <p class="text-gray-600 text-xs sm:text-sm mt-1">Comprender el impacto real de sus acciones en el bienestar del país y del mundo entero.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-escolaris-darkblue text-white p-4 rounded-xl text-center text-xs sm:text-sm">
+                    💡 <span class="text-escolaris-yellow font-bold">Dato Escolaris:</span> ¿Sabías que los héroes no siempre usan capa? Muchos de ellos usan libros, pinceles o bisturís.
+                </div>
+            </div>
+
+            <!-- Slide 3: Activación de conocimientos previos -->
+            <div id="slide-3" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div class="space-y-2">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-escolaris-darkblue flex items-center gap-2">
+                        <span class="text-escolaris-orange text-3xl">🤔</span> ¡Piensa un Momento!
+                    </h2>
+                    <p class="text-gray-600 text-xs sm:text-sm">Haz clic en cada pregunta para activar tu supermente antes de empezar.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto">
+                    <!-- Interactive Card 1 -->
+                    <div onclick="toggleCard('previa1')" class="cursor-pointer bg-escolaris-lightblue border-2 border-dashed border-escolaris-darkblue/20 hover:border-escolaris-orange p-5 rounded-2xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🌍</span>
+                            <h3 class="font-bold text-escolaris-darkblue text-sm sm:text-base">¿Un Premio Nobel?</h3>
+                        </div>
+                        <p id="previa1-desc" class="text-gray-500 text-xs sm:text-sm mt-2 font-medium">¿Sabes qué es un Premio Nobel y cuántos guatemaltecos han ganado este valiosísimo galardón mundial?</p>
+                        <p id="previa1-ans" class="hidden text-escolaris-orange text-xs sm:text-sm mt-3 font-semibold bg-white p-3 rounded-lg border border-escolaris-orange/20">
+                            ¡Es el premio más importante del planeta! Guatemala tiene el gran orgullo de contar con dos ganadores históricos de este premio.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Card 2 -->
+                    <div onclick="toggleCard('previa2')" class="cursor-pointer bg-escolaris-lightblue border-2 border-dashed border-dashed border-escolaris-darkblue/20 hover:border-escolaris-orange p-5 rounded-2xl transition duration-300 transform hover:-translate-y-1">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🧬</span>
+                            <h3 class="font-bold text-escolaris-darkblue text-sm sm:text-base">¿Ciencia y Arte?</h3>
+                        </div>
+                        <p id="previa2-desc" class="text-gray-500 text-xs sm:text-sm mt-2 font-medium">¿Se puede ser un héroe nacional inventando soluciones médicas o diseñando magníficos teatros?</p>
+                        <p id="previa2-ans" class="hidden text-escolaris-orange text-xs sm:text-sm mt-3 font-semibold bg-white p-3 rounded-lg border border-escolaris-orange/20">
+                            ¡Por supuesto! El talento y la dedicación salvan vidas, educan sociedades y embellecen nuestras queridas ciudades del país.
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-center text-xs text-gray-400 italic">Haz clic en los cuadros de arriba para descubrir las respuestas preliminares.</p>
+            </div>
+
+            <!-- Slide 4: Palabras clave -->
+            <div id="slide-4" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-escolaris-darkblue flex items-center gap-2">
+                        <span class="text-escolaris-yellow text-3xl">🔑</span> Diccionario de Ciudadanos
+                    </h2>
+                    <p class="text-gray-600 text-xs sm:text-sm">Estas tres palabras mágicas te ayudarán a comprender mejor nuestra grandiosa lección:</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto">
+                    <!-- Key Word 1 -->
+                    <div class="bg-white border border-gray-100 p-4 rounded-xl shadow-md text-center">
+                        <div class="text-3xl mb-1">🕊️</div>
+                        <h4 class="font-black text-escolaris-darkblue text-sm uppercase">Pacifista</h4>
+                        <div class="h-1 w-10 bg-escolaris-orange mx-auto my-2"></div>
+                        <p class="text-gray-600 text-xs">Persona que lucha por resolver los conflictos a través del diálogo, del amor y sin violencia.</p>
+                    </div>
+                    <!-- Key Word 2 -->
+                    <div class="bg-white border border-gray-100 p-4 rounded-xl shadow-md text-center">
+                        <div class="text-3xl mb-1">🔬</div>
+                        <h4 class="font-black text-escolaris-darkblue text-sm uppercase">Filántropo</h4>
+                        <div class="h-1 w-10 bg-escolaris-yellow mx-auto my-2"></div>
+                        <p class="text-gray-600 text-xs">Alguien que dedica generosamente su tiempo, dinero y conocimientos a salvar o ayudar a otras personas.</p>
+                    </div>
+                    <!-- Key Word 3 -->
+                    <div class="bg-white border border-gray-100 p-4 rounded-xl shadow-md text-center">
+                        <div class="text-3xl mb-1">🎨</div>
+                        <h4 class="font-black text-escolaris-darkblue text-sm uppercase">Legado</h4>
+                        <div class="h-1 w-10 bg-escolaris-red mx-auto my-2"></div>
+                        <p class="text-gray-600 text-xs">Aporte material, espiritual o cultural muy valioso que se hereda a las siguientes generaciones.</p>
+                    </div>
+                </div>
+
+                <div class="bg-escolaris-lightblue p-3 rounded-lg text-center text-xs text-escolaris-darkblue font-medium border border-escolaris-darkblue/10">
+                    💡 <span class="font-bold text-escolaris-orange">¡Consejo!</span> Busca estas palabras en el contenido que leerás a continuación.
+                </div>
+            </div>
+
+            <!-- Slide 5: Contenido principal -->
+            <div id="slide-5" class="slide-element hidden p-6 sm:p-8 flex flex-col justify-between h-full">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-escolaris-darkblue flex items-center justify-between">
+                        <span>👥 Grandes Personajes Históricos</span>
+                        <span class="text-xs bg-escolaris-orange/20 text-escolaris-orange px-2 py-1 rounded-md">100% Información Fidedigna</span>
+                    </h2>
+                    <p class="text-gray-600 text-xs">Haz clic en cada héroe de Guatemala para ver su valiente historia de transformación nacional:</p>
+                </div>
+
+                <!-- Interactive Hero Selectors (Taps/Clicks, iPad Friendly, No Drag) -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 my-auto">
+                    <button id="heroTab-1" onclick="showHero(1)" class="p-3 rounded-xl font-bold text-xs border-2 text-center bg-escolaris-darkblue text-white border-escolaris-darkblue transition duration-200">
+                        <span class="text-xl block">🕊️</span> Rigoberta Menchú
+                    </button>
+                    <button id="heroTab-2" onclick="showHero(2)" class="p-3 rounded-xl font-bold text-xs border-2 text-center bg-white text-escolaris-darkblue border-gray-200 hover:border-escolaris-darkblue transition duration-200">
+                        <span class="text-xl block">🖋️</span> M. Ángel Asturias
+                    </button>
+                    <button id="heroTab-3" onclick="showHero(3)" class="p-3 rounded-xl font-bold text-xs border-2 text-center bg-white text-escolaris-darkblue border-gray-200 hover:border-escolaris-darkblue transition duration-200">
+                        <span class="text-xl block">🫀</span> Dr. Aldo Castañeda
+                    </button>
+                    <button id="heroTab-4" onclick="showHero(4)" class="p-3 rounded-xl font-bold text-xs border-2 text-center bg-white text-escolaris-darkblue border-gray-200 hover:border-escolaris-darkblue transition duration-200">
+                        <span class="text-xl block">🏛️</span> Efraín Recinos
+                    </button>
+                </div>
+
+                <!-- Hero Content Box -->
+                <div id="heroContentBox" class="bg-escolaris-lightblue/60 p-4 sm:p-5 rounded-2xl border border-escolaris-darkblue/10 flex flex-col justify-center min-h-[160px] max-h-[190px] overflow-y-auto custom-scrollbar">
+                    <!-- Hero 1 (Default) -->
+                    <div id="hero-1" class="space-y-2 animate__animated animate__fadeIn">
+                        <h3 class="font-bold text-escolaris-darkblue text-base sm:text-lg flex items-center gap-2">
+                            Rigoberta Menchú Tum <span class="text-xs text-escolaris-orange font-bold">(Líder Pacifista Indígena K'iche')</span>
+                        </h3>
+                        <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                            Nacida en Uspantán, luchó incansablemente por los derechos humanos de los pueblos indígenas y la reconciliación del país tras el conflicto armado. Su ejemplo de resiliencia y paz mundial fue reconocido con el emblemático **Premio Nobel de la Paz en 1992**, convirtiéndose en un ícono internacional.
+                        </p>
+                    </div>
+
+                    <!-- Hero 2 -->
+                    <div id="hero-2" class="space-y-2 hidden animate__animated animate__fadeIn">
+                        <h3 class="font-bold text-escolaris-darkblue text-base sm:text-lg flex items-center gap-2">
+                            Miguel Ángel Asturias <span class="text-xs text-escolaris-orange font-bold">(Gigante de las Letras)</span>
+                        </h3>
+                        <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                            Uno de los novelistas y poetas más brillantes de América. Recibió el **Premio Nobel de Literatura en 1967** por sus obras fundamentales como *Hombres de Maíz* y *El Señor Presidente*, donde plasmó de forma mágica las leyendas, el dolor, la mitología maya y la realidad de los pueblos originarios de Guatemala.
+                        </p>
+                    </div>
+
+                    <!-- Hero 3 -->
+                    <div id="hero-3" class="space-y-2 hidden animate__animated animate__fadeIn">
+                        <h3 class="font-bold text-escolaris-darkblue text-base sm:text-lg flex items-center gap-2">
+                            Dr. Aldo Castañeda <span class="text-xs text-escolaris-orange font-bold">(Héroe de Corazones)</span>
+                        </h3>
+                        <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                            Médico cirujano pionero a nivel mundial en la cirugía cardiovascular infantil. Su pasión por los niños lo llevó a fundar **UNICAR** y la Fundación Aldo Castañeda en Guatemala, salvando de forma directa a miles de niños guatemaltecos de escasos recursos diagnosticados con malformaciones complejas en sus corazones.
+                        </p>
+                    </div>
+
+                    <!-- Hero 4 -->
+                    <div id="hero-4" class="space-y-2 hidden animate__animated animate__fadeIn">
+                        <h3 class="font-bold text-escolaris-darkblue text-base sm:text-lg flex items-center gap-2">
+                            Efraín Recinos Valenzuela <span class="text-xs text-escolaris-orange font-bold">(Polifacético Genio Creador)</span>
+                        </h3>
+                        <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                            Pintor, escultor, ingeniero y genio arquitecto apodado "el Picasso de Guatemala". Su obra cumbre es el monumental **Centro Cultural Miguel Ángel Asturias** (el Teatro Nacional), diseñado imitando la silueta de una jaguar acostada rodeada de colinas, fusionando arte maya y modernidad.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center text-xs text-gray-500 font-bold">
+                    ¡Presiona cada pestaña para descubrir a todos los personajes de la galería!
+                </div>
+            </div>
+
+            <!-- Slide 6: Exploración visual -->
+            <div id="slide-6" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-escolaris-darkblue flex items-center gap-2">
+                        <span class="text-escolaris-orange text-3xl">🔍</span> Mapa del Legado Nacional
+                    </h2>
+                    <p class="text-gray-600 text-xs sm:text-sm">Haz clic en los 3 puntos calientes para descubrir los asombrosos logros emblemáticos:</p>
+                </div>
+
+                <!-- Simulation Visual Board -->
+                <div class="relative bg-escolaris-lightblue/80 border-2 border-dashed border-escolaris-darkblue/20 rounded-2xl h-60 my-auto flex items-center justify-center">
+                    <div class="text-center space-y-2 pointer-events-none">
+                        <p class="text-escolaris-darkblue font-extrabold text-lg">Guatemala de la Paz, la Ciencia y el Arte</p>
+                        <p class="text-gray-500 text-xs">Simulación de nuestro mapa de aportes ciudadanos</p>
+                    </div>
+
+                    <!-- Interactive Point 1: Paz -->
+                    <button onclick="showVisualFact('paz')" class="absolute top-[25%] left-[20%] w-10 h-10 bg-escolaris-orange hover:bg-escolaris-orange/90 text-white rounded-full flex items-center justify-center font-bold shadow-lg transform hover:scale-110 active:scale-95 focus:outline-none animate-pulse">
+                        🕊️
+                    </button>
+
+                    <!-- Interactive Point 2: Letras -->
+                    <button onclick="showVisualFact('letras')" class="absolute top-[60%] left-[50%] w-10 h-10 bg-escolaris-yellow text-escolaris-darkblue hover:bg-escolaris-yellow/95 rounded-full flex items-center justify-center font-bold shadow-lg transform hover:scale-110 active:scale-95 focus:outline-none animate-pulse">
+                        📚
+                    </button>
+
+                    <!-- Interactive Point 3: Salud -->
+                    <button onclick="showVisualFact('salud')" class="absolute top-[35%] right-[20%] w-10 h-10 bg-escolaris-red text-white rounded-full flex items-center justify-center font-bold shadow-lg transform hover:scale-110 active:scale-95 focus:outline-none animate-pulse">
+                        ❤️
+                    </button>
+
+                    <!-- Feedback Visual Content overlay -->
+                    <div id="visualFactPanel" class="absolute inset-0 bg-white/95 rounded-2xl p-6 flex flex-col justify-center items-center text-center hidden animate__animated animate__fadeIn">
+                        <span id="visualFactIcon" class="text-4xl mb-2"></span>
+                        <h4 id="visualFactTitle" class="font-extrabold text-escolaris-darkblue text-base"></h4>
+                        <p id="visualFactDesc" class="text-gray-600 text-xs sm:text-sm max-w-lg mt-2"></p>
+                        <button onclick="hideVisualFact()" class="mt-4 bg-escolaris-darkblue text-white text-xs px-4 py-2 rounded-lg font-bold hover:bg-escolaris-darkblue/90">
+                            Volver al mapa
+                        </button>
+                    </div>
+                </div>
+
+                <p class="text-center text-xs text-gray-500 font-semibold italic">¡Toca los íconos vibrantes para explorar los hitos!</p>
+            </div>
+
+            <!-- Slide 7: Actividad de comprensión (Quiz interactivo) -->
+            <div id="slide-7" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-escolaris-darkblue flex items-center gap-2">
+                        <span class="text-escolaris-yellow text-3xl">⚡</span> Comprensión de Lectura
+                    </h2>
+                    <p class="text-gray-600 text-xs sm:text-sm">Demuestra lo que has aprendido. Selecciona con un toque la respuesta que consideres correcta:</p>
+                </div>
+
+                <div class="my-auto space-y-4">
+                    <p class="font-bold text-escolaris-darkblue text-sm sm:text-base">
+                        ¿Qué prestigioso reconocimiento mundial ganaron por separado Rigoberta Menchú Tum y Miguel Ángel Asturias?
+                    </p>
+
+                    <!-- Quiz options -->
+                    <div class="grid grid-cols-1 gap-2">
+                        <button onclick="checkQuiz1(1)" class="quiz1-opt w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-escolaris-lightblue text-xs sm:text-sm font-semibold flex items-center gap-3 transition">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-xs">A</span>
+                            La medalla de oro en los Juegos Olímpicos mundiales de natación.
+                        </button>
+                        <button onclick="checkQuiz1(2)" class="quiz1-opt w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-escolaris-lightblue text-xs sm:text-sm font-semibold flex items-center gap-3 transition">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-xs">B</span>
+                            El prestigioso Premio Nobel, en las categorías de Paz y Literatura respectivamente.
+                        </button>
+                        <button onclick="checkQuiz1(3)" class="quiz1-opt w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-escolaris-lightblue text-xs sm:text-sm font-semibold flex items-center gap-3 transition">
+                            <span class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-xs">C</span>
+                            El reconocimiento al mejor deportista del año en Centroamérica.
+                        </button>
+                    </div>
+
+                    <!-- Quiz 1 Feedback Box -->
+                    <div id="quiz1-feedback" class="hidden p-3 rounded-xl text-xs sm:text-sm font-bold border flex items-center justify-between">
+                        <span id="quiz1-feedback-text"></span>
+                        <button id="quiz1-retry" onclick="resetQuiz1()" class="bg-white text-gray-800 text-xs px-3 py-1 rounded-md border shadow hidden">Reintentar</button>
+                    </div>
+                </div>
+
+                <div class="text-xs text-gray-400 italic text-center">¡Obtén retroalimentación pedagógica instantánea al responder!</div>
+            </div>
+
+            <!-- Slide 8: Juego educativo (Tocar para relacionar) -->
+            <div id="slide-8" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-escolaris-darkblue flex items-center gap-2">
+                        <span class="text-escolaris-orange text-3xl">🎮</span> Desafío de Asociación
+                    </h2>
+                    <p class="text-gray-600 text-xs sm:text-sm">
+                        ¡Ayuda a conectar el personaje con su legado! Elige primero un personaje en la columna izquierda y luego su obra correspondiente a la derecha.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 my-auto">
+                    <!-- Column A: Characters -->
+                    <div class="space-y-2">
+                        <span class="text-xs font-black text-escolaris-darkblue uppercase tracking-wider block">Personaje</span>
+                        <button id="match-char-1" onclick="selectChar(1)" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:border-escolaris-orange bg-white text-xs sm:text-sm font-bold flex items-center justify-between transition">
+                            <span>🩺 Aldo Castañeda</span>
+                        </button>
+                        <button id="match-char-2" onclick="selectChar(2)" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:border-escolaris-orange bg-white text-xs sm:text-sm font-bold flex items-center justify-between transition">
+                            <span>🏛️ Efraín Recinos</span>
+                        </button>
+                    </div>
+
+                    <!-- Column B: Legacies -->
+                    <div class="space-y-2">
+                        <span class="text-xs font-black text-escolaris-darkblue uppercase tracking-wider block">Legado</span>
+                        <button id="match-leg-2" onclick="selectLegacy(2)" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:border-escolaris-orange bg-white text-xs sm:text-sm font-semibold transition">
+                            Diseñó el Centro Cultural de Guatemala (Teatro Nacional).
+                        </button>
+                        <button id="match-leg-1" onclick="selectLegacy(1)" class="w-full text-left p-3 rounded-xl border border-gray-200 hover:border-escolaris-orange bg-white text-xs sm:text-sm font-semibold transition">
+                            Fundó UNICAR para operar gratuitamente corazones de niños.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game Feedback Box -->
+                <div id="game-feedback" class="bg-escolaris-lightblue p-3 rounded-xl text-center text-xs sm:text-sm font-bold text-escolaris-darkblue border border-escolaris-darkblue/10 min-h-[40px] flex items-center justify-center">
+                    Selecciona un personaje de la izquierda para comenzar el emparejamiento interactivo.
+                </div>
+            </div>
+
+            <!-- Slide 9: Aplicación práctica -->
+            <div id="slide-9" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-escolaris-darkblue flex items-center gap-2">
+                        <span class="text-escolaris-yellow text-3xl">🌱</span> Ciudadanos del Futuro
+                    </h2>
+                    <p class="text-gray-600 text-xs sm:text-sm">Lee la siguiente situación de la vida diaria y elige cuál sería la mejor forma de actuar:</p>
+                </div>
+
+                <div class="bg-escolaris-lightblue/60 p-4 rounded-xl border-l-4 border-escolaris-orange my-auto space-y-3">
+                    <p class="text-xs sm:text-sm text-gray-700 font-semibold italic">
+                        "En tu escuela hay una discusión fuerte entre dos compañeros durante el recreo y todos están gritando enfadados..."
+                    </p>
+                    <p class="text-xs sm:text-sm text-escolaris-darkblue font-bold">
+                        Si quisieras inspirarte en el valioso legado pacifista de Rigoberta Menchú, ¿cuál de estas tres acciones tomarías?
+                    </p>
+                    
+                    <div class="grid grid-cols-1 gap-2">
+                        <button onclick="checkPractice(1)" class="practice-opt w-full text-left p-2.5 bg-white rounded-lg border border-gray-200 hover:bg-escolaris-lightblue text-xs font-semibold flex items-center gap-2 transition">
+                            <span>1️⃣</span> Unirme a los gritos para defender a mi mejor amigo y así ganar la discusión rápidamente.
+                        </button>
+                        <button onclick="checkPractice(2)" class="practice-opt w-full text-left p-2.5 bg-white rounded-lg border border-gray-200 hover:bg-escolaris-lightblue text-xs font-semibold flex items-center gap-2 transition">
+                            <span>2️⃣</span> Buscar dialogar con calma, escuchar atentamente ambas partes y proponer una solución amigable.
+                        </button>
+                        <button onclick="checkPractice(3)" class="practice-opt w-full text-left p-2.5 bg-white rounded-lg border border-gray-200 hover:bg-escolaris-lightblue text-xs font-semibold flex items-center gap-2 transition">
+                            <span>3️⃣</span> Simplemente ignorar la situación y dejar que sigan discutiendo indefinidamente.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Practice Feedback Box -->
+                <div id="practice-feedback" class="hidden p-3 rounded-xl text-center text-xs font-bold border"></div>
+            </div>
+
+            <!-- Slide 10: Repaso final -->
+            <div id="slide-10" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-escolaris-darkblue flex items-center justify-between">
+                        <span>📝 Repaso Rápido de Datos</span>
+                        <span id="quiz-badge" class="text-xs bg-escolaris-orange text-white px-2 py-1 rounded-md font-bold">Pregunta 1/3</span>
+                    </h2>
+                    <p class="text-gray-600 text-xs">Evaluemos lo aprendido con un test final dinámico y de autocorrección inmediata:</p>
+                </div>
+
+                <!-- Multi-question Quiz Container -->
+                <div id="test-container" class="my-auto space-y-4">
+                    <!-- Question 1 -->
+                    <div id="test-q1" class="space-y-3">
+                        <p class="font-extrabold text-escolaris-darkblue text-sm sm:text-base">
+                            ¿A qué se dedicó principalmente el Dr. Aldo Castañeda durante su brillante trayectoria profesional?
+                        </p>
+                        <div class="grid grid-cols-1 gap-2">
+                            <button onclick="answerTest(1, false)" class="w-full text-left p-2.5 bg-gray-50 hover:bg-escolaris-lightblue rounded-xl text-xs sm:text-sm font-semibold border border-gray-200">
+                                A la pintura surrealista y el diseño arquitectónico de iglesias.
+                            </button>
+                            <button onclick="answerTest(1, true)" class="w-full text-left p-2.5 bg-gray-50 hover:bg-escolaris-lightblue rounded-xl text-xs sm:text-sm font-semibold border border-gray-200">
+                                A la cirugía de corazón para salvar las vidas de muchos niños pequeños.
+                            </button>
+                            <button onclick="answerTest(1, false)" class="w-full text-left p-2.5 bg-gray-50 hover:bg-escolaris-lightblue rounded-xl text-xs sm:text-sm font-semibold border border-gray-200">
+                                A escribir poemas y cuentos sobre héroes de la revolución nacional.
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div id="test-q2" class="space-y-3 hidden">
+                        <p class="font-extrabold text-escolaris-darkblue text-sm sm:text-base">
+                            ¿Cuál de estos edificios es la obra maestra del genial creador nacional Efraín Recinos?
+                        </p>
+                        <div class="grid grid-cols-1 gap-2">
+                            <button onclick="answerTest(2, true)" class="w-full text-left p-2.5 bg-gray-50 hover:bg-escolaris-lightblue rounded-xl text-xs sm:text-sm font-semibold border border-gray-200">
+                                El Centro Cultural Miguel Ángel Asturias (Teatro Nacional de Guatemala).
+                            </button>
+                            <button onclick="answerTest(2, false)" class="w-full text-left p-2.5 bg-gray-50 hover:bg-escolaris-lightblue rounded-xl text-xs sm:text-sm font-semibold border border-gray-200">
+                                El Palacio de los Capitanes Generales ubicado en Antigua Guatemala.
+                            </button>
+                            <button onclick="answerTest(2, false)" class="w-full text-left p-2.5 bg-gray-50 hover:bg-escolaris-lightblue rounded-xl text-xs sm:text-sm font-semibold border border-gray-200">
+                                El Aeropuerto de la Ciudad de Guatemala.
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div id="test-q3" class="space-y-3 hidden">
+                        <p class="font-extrabold text-escolaris-darkblue text-sm sm:text-base">
+                            ¿En qué año recibió Rigoberta Menchú el reconocimiento del Premio Nobel de la Paz?
+                        </p>
+                        <div class="grid grid-cols-1 gap-2">
+                            <button onclick="answerTest(3, false)" class="w-full text-left p-2.5 bg-gray-50 hover:bg-escolaris-lightblue rounded-xl text-xs sm:text-sm font-semibold border border-gray-200">
+                                En el año 1821, durante la firma del Acta de la Independencia de Centroamérica.
+                            </button>
+                            <button onclick="answerTest(3, false)" class="w-full text-left p-2.5 bg-gray-50 hover:bg-escolaris-lightblue rounded-xl text-xs sm:text-sm font-semibold border border-gray-200">
+                                En el año 2010, debido a la creación de su primera novela literaria.
+                            </button>
+                            <button onclick="answerTest(3, true)" class="w-full text-left p-2.5 bg-gray-50 hover:bg-escolaris-lightblue rounded-xl text-xs sm:text-sm font-semibold border border-gray-200">
+                                En el año 1992, gracias a su lucha constante por los derechos de los pueblos indígenas.
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Test Feedback Overlays -->
+                <div id="test-feedback" class="hidden p-3 rounded-xl text-center text-xs font-bold border"></div>
+            </div>
+
+            <!-- Slide 11: Metacognición -->
+            <div id="slide-11" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-escolaris-darkblue flex items-center gap-2">
+                        <span class="text-escolaris-orange text-3xl">💡</span> Reflexión Personal
+                    </h2>
+                    <p class="text-gray-600 text-xs sm:text-sm">El verdadero aprendizaje ocurre cuando piensas sobre lo que has aprendido hoy:</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto">
+                    <div onclick="revealReflection('ref1')" class="cursor-pointer bg-white border-2 border-dashed border-gray-200 hover:border-escolaris-yellow p-4 rounded-xl shadow-md transition-all duration-300">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl">🌟</span>
+                            <h4 class="font-bold text-escolaris-darkblue text-xs sm:text-sm">¿Qué fue lo más valioso que descubrí hoy?</h4>
+                        </div>
+                        <p id="ref1-ans" class="hidden text-gray-600 text-xs mt-3 bg-escolaris-lightblue/40 p-2.5 rounded-lg border border-escolaris-lightblue">
+                            Que nuestro país posee personas muy talentosas y solidarias que han ayudado activamente a que vivamos en paz, sanos y rodeados de maravilloso arte nacional.
+                        </p>
+                    </div>
+
+                    <div onclick="revealReflection('ref2')" class="cursor-pointer bg-white border-2 border-dashed border-gray-200 hover:border-escolaris-yellow p-4 rounded-xl shadow-md transition-all duration-300">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xl">🚀</span>
+                            <h4 class="font-bold text-escolaris-darkblue text-xs sm:text-sm">¿Cómo puedo aplicar esto en mi colegio?</h4>
+                        </div>
+                        <p id="ref2-ans" class="hidden text-gray-600 text-xs mt-3 bg-escolaris-lightblue/40 p-2.5 rounded-lg border border-escolaris-lightblue">
+                            Esforzándome en mis estudios todos los días, respetando incondicionalmente las diferencias culturales y promoviendo la paz con mis compañeros en el aula virtual.
+                        </p>
+                    </div>
+                </div>
+
+                <p class="text-center text-xs text-gray-400 font-semibold italic">Toca cada tarjeta reflexiva para ayudarte a meditar sobre el tema.</p>
+            </div>
+
+            <!-- Slide 12: Cierre y reconocimiento -->
+            <div id="slide-12" class="slide-element hidden p-6 sm:p-10 flex flex-col justify-between h-full text-center">
+                <div class="my-auto space-y-6">
+                    <div class="flex justify-center">
+                        <div class="relative animate__animated animate__rotateIn">
+                            <!-- Gorgeous Certificate Seal Badge (Escolaris style) -->
+                            <div class="w-32 h-32 bg-escolaris-orange text-white rounded-full flex flex-col items-center justify-center shadow-2xl border-4 border-escolaris-yellow font-black relative">
+                                <span class="text-5xl">🏆</span>
+                                <span class="text-[9px] uppercase tracking-widest mt-1">Sello Escolaris</span>
+                            </div>
+                            <!-- Small confetti absolute dots -->
+                            <span class="absolute -top-2 -left-2 text-xl animate-bounce">✨</span>
+                            <span class="absolute -bottom-2 -right-2 text-xl animate-bounce">✨</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-escolaris-darkblue">¡Felicitaciones, Ciudadano de Honor!</h2>
+                        <p class="text-gray-600 text-sm sm:text-base max-w-xl mx-auto">
+                            Has completado con éxito la **Lección 11: Hombres y mujeres importantes de Guatemala**. Tu entusiasmo es el motor de nuestro país. ¡Sigue brillando siempre en el Colegio Escolaris!
+                        </p>
+                    </div>
+
+                    <div class="inline-flex items-center gap-2 bg-escolaris-yellow/20 text-escolaris-darkblue text-xs sm:text-sm px-4 py-2 rounded-full font-bold">
+                        <span>🛡️</span> Ciudadanía de 6° Primaria Completo • 100% de Logros
+                    </div>
+                </div>
+
+                <div class="text-xs text-gray-400">Ahora puedes proceder a completar la tarea del portal Canvas.</div>
+            </div>
+
+        </div>
+
+        <!-- Large Right Nav Arrow -->
+        <button id="nextBtn" onclick="nextSlide()" class="absolute right-1 sm:right-4 z-10 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white hover:bg-escolaris-yellow text-escolaris-darkblue hover:text-white shadow-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110 active:scale-95 border-2 border-escolaris-darkblue/10 focus:outline-none">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+    </main>
+
+    <!-- Footer Credit and Interactive Audio Toggle Simulator -->
+    <footer class="bg-gray-100 border-t border-gray-200 px-6 py-3 flex justify-between items-center shrink-0">
+        <span class="text-[10px] sm:text-xs text-gray-500 font-semibold">Colegio Escolaris © 2026 • Formación de Líderes Innovadores</span>
+        <div class="flex items-center gap-2 text-[10px] sm:text-xs text-escolaris-darkblue font-extrabold">
+            <span>📖 Modo Presentación Interactiva (Canvas Iframe Ready)</span>
+        </div>
+    </footer>
+
+    <script>
+        // Total slides configured
+        const TOTAL_SLIDES = 12;
+        let currentSlide = 1;
+
+        // Slide navigation controller
+        function updateSlideVisibility() {
+            // Hide all slides
+            for (let i = 1; i <= TOTAL_SLIDES; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                if (slide) {
+                    slide.classList.add('hidden');
+                }
+            }
+            
+            // Show active slide
+            const activeSlide = document.getElementById(`slide-${currentSlide}`);
+            if (activeSlide) {
+                activeSlide.classList.remove('hidden');
+                activeSlide.classList.add('animate__animated', 'animate__fadeIn');
+            }
+
+            // Update Header progress
+            const progressPercent = (currentSlide / TOTAL_SLIDES) * 100;
+            document.getElementById('progressBar').style.width = `${progressPercent}%`;
+            document.getElementById('progressText').innerText = `${currentSlide}/${TOTAL_SLIDES}`;
+
+            // Control Navigation buttons state
+            document.getElementById('prevBtn').disabled = (currentSlide === 1);
+            document.getElementById('nextBtn').disabled = (currentSlide === TOTAL_SLIDES);
+        }
+
+        function nextSlide() {
+            if (currentSlide < TOTAL_SLIDES) {
+                currentSlide++;
+                updateSlideVisibility();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideVisibility();
+            }
+        }
+
+        // Support Arrow Keys Navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "ArrowRight") {
+                nextSlide();
+            } else if (event.key === "ArrowLeft") {
+                prevSlide();
+            }
+        });
+
+        // Touch Swipe Event Support for iPads and tablets
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        const slider = document.querySelector('main');
+        slider.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        slider.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleGesture();
+        }, false);
+        
+        function handleGesture() {
+            if (touchendX < touchstartX - 50) {
+                nextSlide();
+            }
+            if (touchendX > touchstartX + 50) {
+                prevSlide();
+            }
+        }
+
+        // --- Slide 3: Knowledge Activation ---
+        function toggleCard(cardId) {
+            const ans = document.getElementById(`${cardId}-ans`);
+            const desc = document.getElementById(`${cardId}-desc`);
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                desc.classList.add('hidden');
+            } else {
+                ans.classList.add('hidden');
+                desc.classList.remove('hidden');
+            }
+        }
+
+        // --- Slide 5: Interactive Characters Gallery ---
+        function showHero(heroId) {
+            // Reset all tabs styles
+            for (let i = 1; i <= 4; i++) {
+                const tab = document.getElementById(`heroTab-${i}`);
+                const descBox = document.getElementById(`hero-${i}`);
+                if (i === heroId) {
+                    tab.className = "p-3 rounded-xl font-bold text-xs border-2 text-center bg-escolaris-darkblue text-white border-escolaris-darkblue transition duration-200";
+                    descBox.classList.remove('hidden');
+                } else {
+                    tab.className = "p-3 rounded-xl font-bold text-xs border-2 text-center bg-white text-escolaris-darkblue border-gray-200 hover:border-escolaris-darkblue transition duration-200";
+                    descBox.classList.add('hidden');
+                }
+            }
+        }
+
+        // --- Slide 6: Visual Exploration Hot Spots ---
+        const visualFacts = {
+            paz: {
+                icon: '🕊️',
+                title: 'Rigoberta Menchú Tum - Nobel de la Paz 1992',
+                desc: 'Un reconocimiento universal por su incansable labor a favor de la justicia social, los derechos de las etnias mayas y la firma histórica de la paz firme y duradera en Guatemala.'
+            },
+            letras: {
+                icon: '📚',
+                title: 'Miguel Ángel Asturias - Nobel de Literatura 1967',
+                desc: 'Este magnífico premio coronó su genial habilidad para plasmar las hermosas tradiciones mágicas y los retos sociales de nuestras raíces mayas en sus inolvidables novelas y poemas de nivel mundial.'
+            },
+            salud: {
+                icon: '❤️',
+                title: 'Cirugía de Corazón Pediátrica - Dr. Aldo Castañeda',
+                desc: 'Guatemala se convirtió en el faro de esperanza médica en toda Centroamérica gracias a las avanzadas cirugías a corazón abierto practicadas de forma gratuita para salvar bebés de todas partes.'
+            }
+        };
+
+        function showVisualFact(key) {
+            const fact = visualFacts[key];
+            document.getElementById('visualFactIcon').innerText = fact.icon;
+            document.getElementById('visualFactTitle').innerText = fact.title;
+            document.getElementById('visualFactDesc').innerText = fact.desc;
+            document.getElementById('visualFactPanel').classList.remove('hidden');
+        }
+
+        function hideVisualFact() {
+            document.getElementById('visualFactPanel').classList.add('hidden');
+        }
+
+        // --- Slide 7: Multiple Choice Quiz ---
+        function checkQuiz1(optionSelected) {
+            const feedback = document.getElementById('quiz1-feedback');
+            const feedbackText = document.getElementById('quiz1-feedback-text');
+            const retryBtn = document.getElementById('quiz1-retry');
+
+            // Reset options style
+            document.querySelectorAll('.quiz1-opt').forEach((btn, index) => {
+                btn.disabled = true;
+                if (index + 1 === 2) {
+                    btn.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+                } else {
+                    btn.classList.add('bg-gray-50', 'text-gray-400');
+                }
+            });
+
+            feedback.classList.remove('hidden');
+            if (optionSelected === 2) {
+                feedback.className = "p-3 rounded-xl text-xs sm:text-sm font-bold border bg-green-50 border-green-200 text-green-700 flex items-center justify-between";
+                feedbackText.innerHTML = "🎉 ¡Excelente! Ambos son ganadores del histórico y mundialmente valorado Premio Nobel.";
+                retryBtn.classList.add('hidden');
+            } else {
+                feedback.className = "p-3 rounded-xl text-xs sm:text-sm font-bold border bg-red-50 border-red-200 text-red-700 flex items-center justify-between";
+                feedbackText.innerHTML = "❌ ¡Inténtalo de nuevo! Recuerda que sus grandes logros se basaron en la Paz y en las hermosas Letras.";
+                retryBtn.classList.remove('hidden');
+            }
+        }
+
+        function resetQuiz1() {
+            const feedback = document.getElementById('quiz1-feedback');
+            feedback.classList.add('hidden');
+            document.querySelectorAll('.quiz1-opt').forEach((btn) => {
+                btn.disabled = false;
+                btn.className = "quiz1-opt w-full text-left p-3 rounded-xl border border-gray-200 hover:bg-escolaris-lightblue text-xs sm:text-sm font-semibold flex items-center gap-3 transition";
+            });
+        }
+
+        // --- Slide 8: Match game (Tap to select, iPad/Phone compatible) ---
+        let selectedCharacterId = null;
+
+        function selectChar(charId) {
+            // Reset style of character buttons
+            document.getElementById('match-char-1').className = "w-full text-left p-3 rounded-xl border border-gray-200 bg-white text-xs sm:text-sm font-bold flex items-center justify-between transition";
+            document.getElementById('match-char-2').className = "w-full text-left p-3 rounded-xl border border-gray-200 bg-white text-xs sm:text-sm font-bold flex items-center justify-between transition";
+            
+            selectedCharacterId = charId;
+            // Mark selected character button in yellow
+            document.getElementById(`match-char-${charId}`).className = "w-full text-left p-3 rounded-xl border-2 border-escolaris-orange bg-escolaris-orange/10 text-escolaris-darkblue text-xs sm:text-sm font-bold flex items-center justify-between transition";
+            document.getElementById('game-feedback').innerText = "¡Muy bien! Ahora toca su legado en la columna derecha para unirlos.";
+        }
+
+        function selectLegacy(legacyId) {
+            if (selectedCharacterId === null) {
+                document.getElementById('game-feedback').innerText = "⚠️ Por favor, selecciona un personaje de la izquierda primero.";
+                return;
+            }
+
+            const gameFeedback = document.getElementById('game-feedback');
+            if (selectedCharacterId === legacyId) {
+                gameFeedback.className = "bg-green-100 p-3 rounded-xl text-center text-xs sm:text-sm font-bold text-green-800 border border-green-200";
+                
+                if (legacyId === 1) {
+                    gameFeedback.innerText = "🎉 ¡Es correcto! El cirujano Aldo Castañeda salvó miles de niños a través de UNICAR.";
+                    document.getElementById('match-char-1').className = "w-full text-left p-3 rounded-xl border-2 border-green-500 bg-green-50 text-green-700 text-xs sm:text-sm font-bold flex items-center justify-between pointer-events-none";
+                    document.getElementById('match-leg-1').className = "w-full text-left p-3 rounded-xl border-2 border-green-500 bg-green-50 text-green-700 text-xs sm:text-sm font-semibold pointer-events-none";
+                } else {
+                    gameFeedback.innerText = "🎉 ¡Extraordinario! Efraín Recinos diseñó monumentalmente el Centro Cultural de Guatemala.";
+                    document.getElementById('match-char-2').className = "w-full text-left p-3 rounded-xl border-2 border-green-500 bg-green-50 text-green-700 text-xs sm:text-sm font-bold flex items-center justify-between pointer-events-none";
+                    document.getElementById('match-leg-2').className = "w-full text-left p-3 rounded-xl border-2 border-green-500 bg-green-50 text-green-700 text-xs sm:text-sm font-semibold pointer-events-none";
+                }
+                selectedCharacterId = null;
+            } else {
+                gameFeedback.className = "bg-red-100 p-3 rounded-xl text-center text-xs sm:text-sm font-bold text-red-800 border border-red-200";
+                gameFeedback.innerText = "❌ No coincide. ¡Revisa sus legados e intenta de nuevo con otro toque!";
+                
+                // Clear state
+                document.getElementById(`match-char-${selectedCharacterId}`).className = "w-full text-left p-3 rounded-xl border border-gray-200 bg-white text-xs sm:text-sm font-bold flex items-center justify-between transition";
+                selectedCharacterId = null;
+            }
+        }
+
+        // --- Slide 9: Practical Application ---
+        function checkPractice(optionSelected) {
+            const feedback = document.getElementById('practice-feedback');
+            
+            // Disable buttons temporarily
+            document.querySelectorAll('.practice-opt').forEach((btn, index) => {
+                btn.disabled = true;
+                if (index + 1 === 2) {
+                    btn.classList.add('bg-green-50', 'border-green-400');
+                } else {
+                    btn.classList.add('bg-gray-50', 'text-gray-400');
+                }
+            });
+
+            feedback.classList.remove('hidden');
+            if (optionSelected === 2) {
+                feedback.className = "p-3 rounded-xl text-center text-xs font-bold border bg-green-50 border-green-200 text-green-700";
+                feedback.innerHTML = "🌟 ¡Soberbio! El diálogo pacífico es el legado que Rigoberta Menchú nos enseña para construir paz real a diario.";
+            } else {
+                feedback.className = "p-3 rounded-xl text-center text-xs font-bold border bg-red-50 border-red-200 text-red-700";
+                feedback.innerHTML = "❌ Esta opción fomenta conflictos o los ignora. ¡La paz requiere diálogo constructivo! Presiona para cambiar de opinión.";
+                
+                // Re-enable options for retry
+                setTimeout(() => {
+                    document.querySelectorAll('.practice-opt').forEach((btn) => {
+                        btn.disabled = false;
+                        btn.classList.remove('bg-gray-50', 'bg-green-50', 'text-gray-400', 'border-green-400');
+                    });
+                    feedback.classList.add('hidden');
+                }, 3000);
+            }
+        }
+
+        // --- Slide 10: Multi-question Final Quiz Controller ---
+        let currentTestQuestion = 1;
+        
+        function answerTest(questionNum, isCorrect) {
+            const feedback = document.getElementById('test-feedback');
+            feedback.classList.remove('hidden');
+
+            if (isCorrect) {
+                feedback.className = "p-3 rounded-xl text-center text-xs font-bold border bg-green-50 border-green-200 text-green-700";
+                feedback.innerText = "🎉 ¡Perfecto! Dominas muy bien la historia de nuestros personajes.";
+
+                // Wait 1.5s to advance or finish quiz
+                setTimeout(() => {
+                    feedback.classList.add('hidden');
+                    if (currentTestQuestion < 3) {
+                        // Hide current, show next
+                        document.getElementById(`test-q${currentTestQuestion}`).classList.add('hidden');
+                        currentTestQuestion++;
+                        document.getElementById(`test-q${currentTestQuestion}`).classList.remove('hidden');
+                        
+                        // Update dynamic badge
+                        document.getElementById('quiz-badge').innerText = `Pregunta ${currentTestQuestion}/3`;
+                    } else {
+                        // Finished Quiz! Show general feedback
+                        document.getElementById('test-container').innerHTML = `
+                            <div class="text-center py-6 space-y-3 animate__animated animate__zoomIn">
+                                <span class="text-5xl">🎯</span>
+                                <h3 class="font-extrabold text-escolaris-darkblue text-lg">¡Prueba Completada al 100%!</h3>
+                                <p class="text-gray-600 text-xs">Has contestado todas las preguntas correctamente y sin errores pendientes.</p>
+                            </div>
+                        `;
+                        document.getElementById('quiz-badge').innerText = "¡Logrado!";
+                    }
+                }, 1500);
+
+            } else {
+                feedback.className = "p-3 rounded-xl text-center text-xs font-bold border bg-red-50 border-red-200 text-red-700";
+                feedback.innerText = "❌ Incorrecto. No te rindas, vuelve a leer detenidamente e inténtalo otra vez.";
+                
+                // Hide warning after 2.5s
+                setTimeout(() => {
+                    feedback.classList.add('hidden');
+                }, 2500);
+            }
+        }
+
+        // --- Slide 11: Metacognition Cards ---
+        function revealReflection(refId) {
+            const element = document.getElementById(`${refId}-ans`);
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+                element.classList.add('animate__animated', 'animate__fadeIn');
+            } else {
+                element.classList.add('hidden');
+            }
+        }
+
+        // Initialize view on load
+        window.onload = function() {
+            updateSlideVisibility();
+        };
+    </script>
+</body>
+</html>
